@@ -227,8 +227,30 @@ Beispiel : \text{((Init+30)-(7+9),$\sigma$)$\to$ 14 }
 	
 	*Hinweis:Init ist eine location mit $\sigma$(Init) = 0. 
 \end{center}
-                     
-                     
+
+Der Stil der operationelle  Semantik , die hier genutzt wird,ist struktural ( small-step semantics).
+\begin{itemize}
+\item struktural :Syntaxorientiert und induktiv.
+\item Die Semantik eines Programms wird durch  die Semantik seiner Teile definiert.
+
+
+Der Zustandsübergang für 7 + 9 wird mit dem Transition für 7 \ref{2} und dem Transition für 9 \ref {2} beschrieben.
+\end{itemize}
+              
+\subsection{Auswertung von Boolean Expression}       
+ \textbf{Regeln} :
+ \begin{enumerate}
+ \item \label{11} (true,$\sigma$)$\to$true
+	\item \label{12} (false,$\sigma$)$\to$false
+	\item \label{13}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$==$a_1$),$\sigma$) $\to$ true} }$  
+	wenn $a_0$ gleich $a_1$ ist.
+	\item \label{14}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$==$a_1$),$\sigma$) $\to$ false} }$
+	wenn $a_0$ ungleich $a_1$ ist.
+	\item \label{15}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$ $\geq$ $a_1$),$\sigma$) $\to$ true} }$
+	wenn $a_0$ gleich oder grosser als $a_1$ ist.
+	\item \label{16}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$ $\geq$ $a_1$),$\sigma$) $\to$ false} }$
+	wenn $a_0$ ungleich oder kleiner als $a_1$ ist.
+\end{enumerate}          
                      
 \subsection{Theorem-Umgebung}
 

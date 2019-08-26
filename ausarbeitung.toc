@@ -1,0 +1,10 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Einf\IeC {\"u}hrung}{3}{section.1}
+\contentsline {section}{\numberline {2}Zust\IeC {\"a}nde}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Operationelle Semantik}{4}{subsection.2.1}
+\contentsline {section}{\numberline {3}Operationelle Semantik f\IeC {\"u}r Einfache Imperative Sparache}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Syntaktische Menge}{5}{subsection.3.1}
+\contentsline {section}{\numberline {4}Auswertung}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Auswertung von Arithmetic Expression}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Theorem-Umgebung}{6}{subsection.4.2}
+\contentsline {section}{Literaturverzeichnis}{6}{section*.3}

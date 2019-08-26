@@ -1,0 +1,18 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Brouwer und Haemers(2011)]{brouwer2011spectra}
+A.~E. Brouwer und W.~H. Haemers.
+\newblock \emph{Spectra of graphs}.
+\newblock Springer, 2011.
+
+\bibitem[Rajaraman und Ullman(2011)]{rajaraman2011mining}
+A.~Rajaraman und J.~D. Ullman.
+\newblock \emph{Mining of massive datasets}.
+\newblock Cambridge University Press, 2011.
+
+\end{thebibliography}

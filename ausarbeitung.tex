@@ -222,8 +222,11 @@ Hinweis: Regeln ohne premises : heißt Axiome.
 
 
 Beispiel : \text{((Init+30)-(7+9),$\sigma$)$\to$ 14 }
-\begin{center}
-	$\frac{  \text{  $\frac { \text {$\frac  {}  {\text{ (Init,$\sigma$)$\to$0 $\ref{2}$ $\quad$          (30,$\sigma$)$\to$ 30 $\ref{1}$ }}$}   } {\text{(Init+30,$\sigma$)$\to$30  $\ref{3}$}}$ $\qquad$   $\frac { \text {$\frac  {}  {\text{ (7,$\sigma$)$\to$7 $ $\ref{2}$\quad$           (9,$\sigma$)$\to$9 $\ref{2}$}}$}} {\text{(7+9,$\sigma$)$\to$16 $\ref{3}$}}$  }} {\text{((Init+30)-(7+9),$\sigma$)$\to$ 14 $\ref{4}$}}$
+\begin{center} \fontsize{18}{15}
+	
+	$\frac{  \text{  $\frac { \text {$\frac  {}  {\text{ (Init,$\sigma$)$\to$0 $\ref{2}$ $\quad$          (30,$\sigma$)$\to$ 30 $\ref{1}$ }}$}   } {\text{(Init+30,$\sigma$)$\to$30  $\ref{3}$}}$ $\qquad$   $\frac { \text {$\frac  {}  {\text{ (7,$\sigma$)$\to$7 $ $\ref{1}$\quad$           (9,$\sigma$)$\to$9 $\ref{1}$}}$}} {\text{(7+9,$\sigma$)$\to$16 $\ref{3}$}}$  }} {\text{((Init+30)-(7+9),$\sigma$)$\to$ 14 $\ref{4}$}}$.
+	
+	
 	
 	*Hinweis:Init ist eine location mit $\sigma$(Init) = 0. 
 \end{center}
@@ -234,7 +237,7 @@ Der Stil der operationelle  Semantik , die hier genutzt wird,ist struktural ( sm
 \item Die Semantik eines Programms wird durch  die Semantik seiner Teile definiert.
 
 
-Der Zustandsübergang für 7 + 9 wird mit dem Transition für 7 \ref{2} und dem Transition für 9 \ref {2} beschrieben.
+Der Zustandsübergang für 7 + 9 wird mit dem Transition für 7 \ref{1} und dem Transition für 9 \ref {1} beschrieben.
 \end{itemize}
               
 \subsection{Auswertung von Boolean Expression}       
@@ -250,7 +253,10 @@ Der Zustandsübergang für 7 + 9 wird mit dem Transition für 7 \ref{2} und dem 
 	wenn $a_0$ gleich oder grosser als $a_1$ ist.
 	\item \label{16}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$ $\geq$ $a_1$),$\sigma$) $\to$ false} }$
 	wenn $a_0$ ungleich oder kleiner als $a_1$ ist.
-\end{enumerate}          
+\end{enumerate}   
+unsere ziel ist  auszuwerten die Boolean Expression in true oder false Value . 
+
+\section{Ausführung von Kommandos}     
                      
 \subsection{Theorem-Umgebung}
 

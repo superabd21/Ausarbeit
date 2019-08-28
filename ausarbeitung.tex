@@ -47,6 +47,7 @@
 \newtheorem{satz}{Satz}
 \newtheorem{theorem}{Theorem}
 \newtheorem{korollar}{Korollar}
+\renewcommand*\baselinestretch{1.35}\selectfont
 
 \begin{document}
 
@@ -92,7 +93,7 @@ TU Dortmund
 \tableofcontents
 \clearpage
 
-\todo[inline]{Alle \texttt{todo}-Befehle entfernen}
+
 
 %------------------------------------------------
 % Einführung
@@ -100,121 +101,99 @@ TU Dortmund
 
 \section{Einführung}
 
-Die Bedeutung der präzisen Semantik für Programmier- und Spezifikationssprachen wurde seit den sechziger Jahren mit der Entwicklung der ersten höheren Programmiersprachen anerkannt. 
-Die Verwendung der operativen Semantik, d. h. einer Semantik, die explizit beschreibt, wie Programme schrittweise durchgeführt werden, und die möglichen Zustandstransformationen durchführen. 
-Beim Erlernen einer neuen Programmiersprache wird normalerweise nur die Syntax angeschaut, um zu wissen, wie bestimmte Sprachkonstrukte geschrieben werden. Syntax behandelt jedoch nur korrekt gebildete Sätze. 
-Dies bedeutet, dass der Programmierer verloren geht, wenn es notwendig wird, zu überprüfen, ob das angegebene Programm tatsächlich den beabsichtigten Vorgang abläuft. Es ist jedem Programmierer passiert, trotz eines syntaktisch korrekten Programm falsche Ergebnisse zurückgeliefert werden. Der Grund dafür ist, dass das Programm nicht unter allen Umständen semantisch korrekt ist. Programme sind normalerweise zu groß und zu komplex, um sie zu verstehen und zu überprüfen, daher ist es wichtig, dass man ein tiefes Verständnis über operationale Semantik hat.
- Die Semantik für eine Programmiersprache stellt abstrakte Entitäten bereit, die nur die relevanten Merkmale aller möglichen Ausführungen darstellen, und ignoriert Details, die für die Korrektheit von Implementierungen nicht relevant sind. Operationale Semantik erzeugt ein gekennzeichnetes Übergangssystem, dessen Zustände die geschlossenen Begriffe über einer algebraischen Signatur sind und deren Übergänge zwischen Zuständen induktiv aus einer Sammlung  Übergangsregeln der Form erhalten werden:
- $\frac{ permises} {Conclusion}$ . (Wenn alle Prämissen stimmen, dann tun die Schlussfolgerungen)
+Die Bedeutung der präzisen Semantik für Programmier- und Spezifikationssprachen wurde seit den sechziger Jahren mit der Entwicklung der ersten höheren Programmiersprachen bekannt. 
+Beim Erlernen einer neuen Programmiersprache wird normalerweise nur die Syntax angeschaut bestimmte Sprachkonstrukte einsetzen zu können. Syntax behandelt jedoch nur korrekt gebildete Sätze. 
+Dies bedeutet, dass der Programmierer überfordert wird, wenn es notwendig wird, zu überprüfen, ob das angegebene Programm tatsächlich den beabsichtigten Vorgang durchläuft.Beim Programmierung kommt es oft vor, dass trotz eines syntaktischen korrekten Programms ein falsches Ergebnis zurückgeliefert wird.  .Der Grund dafür ist, dass das Programm nicht unter allen Umständen semantisch korrekt ist. Programme sind normalerweise zu groß und zu komplex, um sie vollständig zu verstehen und zu überprüfen; daher ist es wichtig, dass man ein tiefes Verständnis für operationale Semantik hat.
+ Operationale Semantik erzeugt ein gekennzeichnetes Übergangssystem, dessen Zustände die geschlossenen Begriffe über einer algebraischen Signatur beschreiben und deren Übergänge zwischen Zuständen induktiv aus einer Sammlung von Übergangsregeln der Form $\frac{ Permises} {Conclusion}$ erhalten werden.Wenn alle Prämissen wahr sind, stimmen auch die Schlussfolgerungen
 
 \section{Zustände}
-Beschreibung der Bedeutung einer Programmierung
-Sprache, indem spezifiziert wird, wie sie auf einem abstrakten Computer ausgeführt wird.
-Sie wird im Speicher durchgeführt und die verschiedenen verfügbaren Ressourcen verwenden. 
-Der Inhält der speicher ändert sich :
-\begin{itemize}
-	\item Variablen werden aktualisiert .
-	\item neue Datenbank .
-\end{itemize}
-Außerdem kann der Inhalt einer variablen im Moment des
-Programmstarts  einen großen Einfluss auf das Endergebnis haben.
-SO müssen wir den Status des Speichers während der Ausführung berücksichtigen.
-wir interessieren uns nur einen Teil vom Speicher(Werte der Variablen ).
-Jetzt können wir Status so definieren:
- Es ist eine Funktion , die Variablen Werte  gibt.
- Die Menge der Zustände $\Sigma$ besteht aus Funktionen $\sigma$ : Loc$\rightarrow$ N .Somit ist $\sigma$ (X) der Wert oder Inhalt der Stelle X im Zustand $\sigma$ .
+Die Semantik von Programmiersprachen beschäftigt sich mit der Bedeutung von Programmen, die auf einem Computer ausgeführt werden sollen und die verschiedenen verfügbaren Ressourcen nutzen.
+ Der Status des Speichers während der Ausführung muss berücksichtigt werden, da der Inhalt des Speichers sich ändern kann; dies geschieht beispielsweise, wenn neue Datenbank angelegt werden oder Variablen aktualisiert werden.
+Außerdem kann der Inhalt einer Variable im Moment des Programmstarts  einen großen Einfluss auf das Endergebnis haben.
+nur ein Teil vom Speicher ist von Interesse (Werte der Variablen ).
+Der Status kann folgendermaßen definiert werden.Es ist eine Funktion, die Variablen Werte  gibt.
+ Die Menge der Zustände $\Sigma$ besteht aus Funktionen $\sigma$ : Loc $\rightarrow$ N.Somit ist $\sigma$ (X) der Wert oder Inhalt der Stelle X im Zustand $\sigma$ .
+ 
  \subsection{Operationelle Semantik}
-Bedeutung eines Programms von einem bestimmten Zustand (Startzustand) und Beobachtung, wie Status im Ende der Ausführung des Programms geändert wird (Endzustand).
+Operationelle Semantik ist die Bedeutung eines Programms von einem bestimmten Zustand (Startzustand) und Beobachtung, wie Status im Ende der Ausführung des Programms geändert wird (Endzustand).
 
-\section{Operationelle Semantik für Einfache Imperative Sparache}
+\section{Operationelle Semantik für die einfache imperative Sprache (IMP)}
+IMP ist ein Programm aus einer Folge von Anweisungen besteht, die vorgeben, in welcher Reihenfolge was vom Computer getan werden soll.
+ Verhalten des IMP  wird durch Regeln beschrieben, die festlegen, wie seine Ausdrücke ausgewertet und seine Befehle ausgeführt werden.
+In unseren Beispiel beziehen sich die Ausdrücke dabei auf
 
+n $\in$ Num, wobei Num positive und negative ganze Zahlen mit Null ist,\\
+b $\in$ BExp, wobei BExp Boolesche Ausdruck ist,\\
+a $\in$ AExp, wobei AExp Arithmetic Expression ist,\\
+c $\in$ commands und\\
+X $\in$ Loc    (Location).
 
-	\textbf{syntaktische Menge mit IMP}
-		\begin{itemize}
-			\item n $\in$ Num   (positive und negative ganze Zahlen mit Null)
-			\item b $\in$ BExp  (Boolean Expression)
-			\item a $\in$ AExp   (Arithmetic Expression)
-			\item c $\in$ commands 
-			\item X $\in$ Loc    (Location).
-		\end{itemize}
+		
 			
-	\textbf{Formationsregeln}: abstrakte Syntax , indem neue Expressions erstellt werden .
-    Hier interessieren wir nur die Bedeutung von Programm ,also nicht wie können das aufschreiben.
-	\begin{itemize}
+\textbf{Formationsregeln}:Formationsregeln sind abstrakte Syntax , indem neue Ausdrücke erstellt werden.Nur die Bedeutung von Programm ist von Interesse, also nicht wie  das aufgeschrieben wird.\\
+Hier beziehen die Formationsregeln sich für unsere Ausdrücke dabei auf\\
 	
-			\item a::= n $\mid$ $a_0$ + $a_1$ $\mid$ $a_0$ - $a_1$ $\mid$ $a_0$ * $a_1$.
-			\item b::= true $\mid$ false $\mid$ $a_0$ == $a_1$ $\mid$ $a_0$ $\geq$ $a_1$ $\mid$ $a_0$ $\leq$ $a_1$.    
-			\item c ::= skip $\mid$ X := a $\mid$  $c_0$, $c_1$ $\mid$ if b then $c_0$ else $c_1$ $\mid$ while b do c .	
-		\end{itemize}
-	Hinweise :
-	\begin{itemize}
-		\item wenn $a_0$ und $a_1$ arithmetische Ausdrücke sind, ist es auch die Resultat von $a_0$ - $a_1$ etc. 
-		\item (\textbf{::=}) sollte gelesen werden als " kann sein " .
+a::= n $\mid$ $a_0$ $\oplus$ $a_1$,\\
+b::= true $\mid$ false $\mid$ $a_0$ == $a_1$ $\mid$ $a_0$ $\geq$ $a_1$ $\mid$ $a_0$ $\leq$ $a_1$ $\mid$ $\neg$ b $\mid$ $b_1$ $\vee$ $b_0$ $\mid$ $b_1$ $\wedge$ $b_0$,\\   
+c ::= skip $\mid$ X := a $\mid$  $c_0$, $c_1$ $\mid$ if b then $c_0$ else $c_1$ $\mid$ while b do c und \\
+$\oplus$ = + $\mid$ - $\mid$ *.	\\
+		
+Hinweise :
+\begin{itemize}
+\item wenn $a_0$ und $a_1$ arithmetische Ausdrücke sind, ist es auch die Resultat von $a_0$ $\oplus$ $a_1$ usw. 
+\item (\textbf{::=}) sollte gelesen werden als " kann sein " .
 		\item (\textbf{$\mid$}) sollte gelesen werden als (oder) .
-	\end{itemize} 
-Beispiel : Die Boolean Expression b kann als True sein , wenn die Bedienung erfüllt ist , sonst False . 
+\end{itemize} 
 
 \subsection{Syntaktische Menge }
-Angenommen , dass wir zwei Elemente haben $a_0$ , $a_1$  $\in$ gleiche syntaktische Menge . wenn wir so  $a_0$ == $a_1$ schreiben, heißt das $a_0$ und $a_1$ gleich Werte haben oder identisch sind . 
-Die  Arithmetic Expression 12 - 2  wird von ganze zahlen aufgebaut. aber sie sind nicht Syntaktisch identisch mit 10 , obwohl wir wissen , dass die Ergebnis identisch ist . so 12-2 ist nicht  Syntaktisch identisch mit 10.
+Seien $a_0$ , $a_1$ Elemente  $\in$ gleiche syntaktische Menge . Die Notation "$a_0$ == $a_1$"heißt, dass $a_0$ und $a_1$ den gleichen Wert haben oder identisch sind . 
+Die  arithmetische Ausdruck "12 - 2"  wird aus ganzen Zahlen aufgebaut. Jedoch sie sind nicht syntaktisch identisch mit 10 , obwohl die Ergebnisse identisch sind.
 
 \section{Auswertung}
-Arithmetic Expression wird in Integer ausgewertet und Boolean Expression wird in True oder False value ausgewertet.
+Arithmetik Expression wird in Integer ausgewertet und Boolean Expression wird in True oder False  ausgewertet.
 wie ein Programm verhaltet sich ?
 \begin{itemize}
 	\item<1-> Status definieren
-	\item<2-> Auswertung der Boolean Expression und Arithmetic Expression.
+	\item<2-> Auswertung der Boolean Expression und Arithmetik Expression.
 	\item <3-> Kommando führt aus
 \end{itemize}
 
-\subsection{Auswertung von Arithmetic Expression}
+\subsection{Auswertung von Arithmetik Expression}
 Die Auswertung eines arithmetischen Ausdrucks a in einem Zustand  $\sigma$ to n.
 
 \begin{center}  (a,$\sigma$) $\to$ n.    
 \end{center}
                       
-Auswertung eines Arithmetic Expression  ($a_0$ * $a_1$):
+Auswertung eines Arithmetik Expression  ($a_0$ $\oplus$ $a_1$):
 \begin{itemize}
 \item wir werten  $a_0$  in $n_0$ aus
 \item wir werten $a_1$ in $n_1$ aus
-\item Jetzt können wir $n_0$ * $n_1$ und n als Ergebnis von $a_0$ * $a_1$ erhalten.
+\item Jetzt können wir $n_0$ $\oplus$ $n_1$ und n als Ergebnis von $a_0$ $\oplus$ $a_1$ erhalten.
 \end{itemize}
-Also brauchen wir Regeln für die Auswertung.
+Also werden die folgende Regeln für die Auswertung benötigt,
 
-\textbf{Regeln} :\begin{enumerate}
+\begin{enumerate}
 
-\item  Auswertung von Nummern : Alle Nummern sind schon ausgewertet.\label{1}
+\item Bei der Auswertung von Nummern : wird davon ausgegangen, dass diese berites ausgewertet sind.\label{1}
 \begin{center}
 (n,$\sigma$) $\to$ n.    
 
- ....no premises braucht   $\frac{ } {\text{(n,$\sigma$) $\to$ n}}$
+ und so keine premises braucht   $\frac{ } {\text{(n,$\sigma$) $\to$ n}}$
 \end{center}  
-\item Auswertung von Location : wird in seiner Inhalt ausgewertet .\label{2}
+\item Bei der Auswertung von Location : wird in seiner Inhalt ausgewertet .\label{2}
 
 \begin{center}
 	(X,$\sigma$) $\to$ $\sigma(X)$.    
 	
-	....no premises braucht    $\frac{ } {\text{(X,$\sigma$) $\to$ $\sigma(X)$}}$
+	und so keine premises braucht    $\frac{ } {\text{(X,$\sigma$) $\to$ $\sigma(X)$}}$
 \end{center} 
 
-\item \label{3} Auswertung von Sum :  n ist die Eregebnis von $n_0$ + $n_1$
+\item \label{3} Bei der Auswertung von Operationen, wobei n die Ergebnis von $n_0$ $\oplus$ $n_1$ ist.
 
 \begin{center}
-	 $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{($a_0$+$a_1$,$\sigma$) $\to$ n} }$ 
+	 $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{($a_0$ $\oplus$ $a_1$,$\sigma$) $\to$ n} }$ 
 \end{center}
 
-\item  \label{4} Auswertung von Subs:n ist die Eregebnis von $n_0$ - $n_1$
-
-\begin{center}
-	$\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{($a_0$-$a_1$,$\sigma$) $\to$ n} }$
-	
-	\end{center}
-
-\item  \label{5} Auswertung von Prod: n ist die Eregebnis von $n_0$ * $n_1$
-
-\begin{center}
-	$\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{($a_0$*$a_1$,$\sigma$) $\to$ n} }$
-	\end{center}
 
 \end{enumerate}   
 Hinweis: Regeln ohne premises : heißt Axiome. 
@@ -224,14 +203,14 @@ Hinweis: Regeln ohne premises : heißt Axiome.
 Beispiel : \text{((Init+30)-(7+9),$\sigma$)$\to$ 14 }
 \begin{center} \fontsize{18}{15}
 	
-	$\frac{  \text{  $\frac { \text {$\frac  {}  {\text{ (Init,$\sigma$)$\to$0 $\ref{2}$ $\quad$          (30,$\sigma$)$\to$ 30 $\ref{1}$ }}$}   } {\text{(Init+30,$\sigma$)$\to$30  $\ref{3}$}}$ $\qquad$   $\frac { \text {$\frac  {}  {\text{ (7,$\sigma$)$\to$7 $ $\ref{1}$\quad$           (9,$\sigma$)$\to$9 $\ref{1}$}}$}} {\text{(7+9,$\sigma$)$\to$16 $\ref{3}$}}$  }} {\text{((Init+30)-(7+9),$\sigma$)$\to$ 14 $\ref{4}$}}$.
+	$\frac{  \text{  $\frac { \text {$\frac  {}  {\text{ (Init,$\sigma$)$\to$0 $\ref{2}$ $\quad$          (30,$\sigma$)$\to$ 30 $\ref{1}$ }}$}   } {\text{(Init+30,$\sigma$)$\to$30  $\ref{3}$}}$ $\qquad$   $\frac { \text {$\frac  {}  {\text{ (7,$\sigma$)$\to$7 $ $\ref{1}$\quad$           (9,$\sigma$)$\to$9 $\ref{1}$}}$}} {\text{(7+9,$\sigma$)$\to$16 $\ref{3}$}}$  }} {\text{((Init+30)-(7+9),$\sigma$)$\to$ 14 $\ref{3}$}}$.
 	
 	
 	
 	*Hinweis:Init ist eine location mit $\sigma$(Init) = 0. 
 \end{center}
 
-Der Stil der operationelle  Semantik , die hier genutzt wird,ist struktural ( small-step semantics).
+Der Stil der operationale  Semantik , die hier genutzt wird,ist strukturell ( big-step semantics).
 \begin{itemize}
 \item struktural :Syntaxorientiert und induktiv.
 \item Die Semantik eines Programms wird durch  die Semantik seiner Teile definiert.
@@ -240,44 +219,84 @@ Der Stil der operationelle  Semantik , die hier genutzt wird,ist struktural ( sm
 Der Zustandsübergang für 7 + 9 wird mit dem Transition für 7 \ref{1} und dem Transition für 9 \ref {1} beschrieben.
 \end{itemize}
               
-\subsection{Auswertung von Boolean Expression}       
- \textbf{Regeln} :
+\subsection{Auswertung von Boolean Expression}  
+
+unsere ziel ist die Boolean Expression in true oder false Value auszuwerten . 
+
+     
+ Die Regeln bestehen aus, 
  \begin{enumerate}
- \item \label{11} (true,$\sigma$)$\to$true
-	\item \label{12} (false,$\sigma$)$\to$false
+ \item \label{11} (true,$\sigma$)$\to$true, 
+	\item \label{12} (false,$\sigma$)$\to$false ,
 	\item \label{13}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$==$a_1$),$\sigma$) $\to$ true} }$  
-	wenn $a_0$ gleich $a_1$ ist.
+	, wenn $a_0$ gleich $a_1$ ist ,
 	\item \label{14}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$==$a_1$),$\sigma$) $\to$ false} }$
-	wenn $a_0$ ungleich $a_1$ ist.
+	, wenn $a_0$ ungleich $a_1$ ist,
 	\item \label{15}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$ $\geq$ $a_1$),$\sigma$) $\to$ true} }$
-	wenn $a_0$ gleich oder grosser als $a_1$ ist.
+	, wenn $a_0$ gleich oder grosser als $a_1$ ist,
 	\item \label{16}  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $n_0$   ($a_1$ , $\sigma$) $\to$ $n_1$} } { \text{(($a_0$ $\geq$ $a_1$),$\sigma$) $\to$ false} }$
-	wenn $a_0$ ungleich oder kleiner als $a_1$ ist.
-\end{enumerate}   
-unsere ziel ist  auszuwerten die Boolean Expression in true oder false Value . 
+	, wenn $a_0$ ungleich oder kleiner als $a_1$ ist,
+	
+	\item \label{17} $\frac  {\text {($b$ , $\sigma$) $\to$ $true$ } } { \text{($\neg$b,$\sigma$) $\to$ flase} }$,
+	\item \label{20} $\frac  {\text {($b$ , $\sigma$) $\to$ $false$ } } { \text{($\neg$b,$\sigma$) $\to$ true} }$,
+	
+	\item \label{18} $\frac  {\text {($b_0$ , $\sigma$) $\to$ $t_0$   ($b_1$ , $\sigma$) $\to$ $t_1$} } { \text{(($b_0$ $\land$ $b_1$),$\sigma$) $\to$ t} }$ und
+	\item \label{19} $\frac  {\text {($b_0$ , $\sigma$) $\to$ $t_0$   ($b_1$ , $\sigma$) $\to$ $t_1$} } { \text{(($b_0$ $\vee$ $b_1$),$\sigma$) $\to$ t} }$.	
+\end{enumerate}  
+Beispiel : $\frac  {\text {($b_0$ , $\sigma$) $\to$ $true$ $\ref{17}$   ($b_1$ , $\sigma$) $\to$ $false$ $\ref{20}$} } { \text{(($b_0$ $\land$ $b_1$),$\sigma$) $\to$ false $\ref{18}$} }$.\\
 
-\section{Ausführung von Kommandos}     
-                     
-\subsection{Theorem-Umgebung}
+In unseren Beispiel wird $b_0$ ausgewertet , dann $b_1$ ausgewertet ,abschließend wird die Ergebnis berechnet . 
+Aber wird es besser , wenn einer der beide false ist , werten die andere nicht aus . so wenn $b_0$ True ist , ist dann die gesamt Ergebnis false , bevor $b_1$ ausgewertet wird. 
 
-\begin{definition}[Gerade Zahlen]
- Eine ganze Zahl $z \in \mathbb Z$ heißt \emph{gerade}, wenn sie durch 2 teilbar ist.
-\end{definition}
+\section{Ausführung von Kommandos}  
+ Der Ziel der Ausführung von Kommandos ist den Zustand von  zu ändern.
 
-\begin{theorem}[Optionaler Titel]
- Es gibt voll viele gerade Zahlen.
-\end{theorem}
-\begin{proof}
- 2 ist zum Beispiel eine. Oder 18, 0, -100 oder 42.
-\end{proof}
+(c,$\sigma$)$\to$ $\sigma_0$  : Die Ausführung des Befehls c im Zustand $\sigma$ und  beendet im Endzustand $\sigma_0$
+(X:=1,$\sigma$) $\to$ $\sigma$[1/X]: Nach der Ausführung der Zuweisung zu Position X, ersetzt der Wert 1 den Inhalt von X
 
+\textbf{Regeln}
+\begin{enumerate}
+	\item (skip,$\sigma$) $\to$ $\sigma$
+	\item $\frac  {\text {(a , $\sigma$) $\to$ m} } { \text{ (X:=a,$\sigma$) $\to$ $\sigma$[m/X]} }$
+	\item  $\frac  {\text {($c_0$ , $\sigma$) $\to$ $\sigma_0$   ($c_1$ , $\sigma_0$) $\to$ $\sigma_1$} } { \text{($c_0$;$c_1$,$\sigma$) $\to$ $\sigma_1$} }$
+	\item $\frac  {\text {(b , $\sigma$) $\to$ true   ($c_0$ , $\sigma$) $\to$ $\sigma_1$} } { \text{(if b then $c_0$ else $c_1$,$\sigma$) $\to$ $\sigma_1$} }$
+	\item $\frac  {\text {(b , $\sigma$) $\to$ false   ($c_1$ , $\sigma$) $\to$ $\sigma_1$} } { \text{(if b then $c_0$ else $c_1$,$\sigma$) $\to$ $\sigma_1$} }$
+	\item $\frac {\text{(b,$\sigma$) $\to$ false}} {\text{(while b do c, $\sigma$)$\to$ $\sigma$ }}$
+	\item $\frac {\text{(b,$\sigma$)$\to$ true $\quad$ (c,$\sigma$)$\to$ $\sigma_2$  $\quad$ (while b do c ,$\sigma_2$) $\to$ $\sigma_1$}}{\text{(while b do c,$\sigma$) $\to$ $\sigma_1$}}$   
+	              
+      \end{enumerate}
+  
+  \section{Zusammenfassung}
+  Es gibt noch viele Semantik Stil Z.B small-Step Semantik , Reduktion semantik .
+  so was haben wir hier genutzt ist Big-step-semantik . Außerdem war es nicht immer die beste Lösung Z.B in Boolean Expression . Es hängt davon ab , welche Eigenschaften  gebraucht werden . 
+  
+  \subsection{Small-step-Semantik vs Big Step Semantik }  
+  \textbf{small-step-Semantik} :
+  \begin{itemize}
+  	\item Hier interessieren wir für jede einzelnen kleinen Berechnungsschritten
+  	\item  die einmalige Bewertung ist nützlich , um bestimmte Eigenschaften zu beweisen.
+  	\item Reihenfolge der Auswertung .
+  	\item Small-Step-Semantik Beispiel :  $\frac  {\text {($a_0$ , $\sigma$) $\to$ $a`_0$ } } { \text{($a_0$+$a_1$,$\sigma$) $\to$ $a`_0$+$a_1$} }$ $\quad$  $\frac  {\text {($a_1$ , $\sigma$) $\to$ $a`_1$ } } { \text{($n_0$+$a_1$,$\sigma$) $\to$ $n_0$+$a`_1$} }$
+  \end{itemize}
+  
+  
+  
+  \textbf{big-step-Semantik}
+\begin{itemize}
+	\item Verhalten der Teile eines Programmkonstrukts dessen Gesamtverhalten (Teile und Herrsche).
+	\item weinger Regeln $\rightarrow$ schneller im Beweis.
+\end{itemize}
+  
+  
 
 %------------------------------------------------
 % Literaturverzeichnis
 %------------------------------------------------
 
+\nocite{*} 
 \bibliographystyle{abbrvnat-ger}
 \bibliography{literatur}
 \addcontentsline{toc}{section}{\bibname}
+
 
 \end{document}

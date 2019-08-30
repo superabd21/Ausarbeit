@@ -102,7 +102,7 @@ TU Dortmund
 \section{Einführung}
 
 Die Bedeutung der präzisen Semantik für Programmier- und Spezifikationssprachen wurde seit den sechziger Jahren mit der Entwicklung der ersten höheren Programmiersprachen bekannt. 
-Beim Erlernen einer neuen Programmiersprache wird normalerweise nur die Syntax angeschaut bestimmte Sprachkonstrukte einsetzen zu können. Syntax behandelt jedoch nur korrekt gebildete Sätze. 
+Beim Erlernen einer neuen Programmiersprache wird normalerweise nur die Syntax angeschaut, um bestimmte Sprachkonstrukte einsetzen zu können. Syntax behandelt jedoch nur korrekt gebildete Sätze. 
 Dies bedeutet, dass der Programmierer überfordert wird, wenn es notwendig wird, zu überprüfen, ob das angegebene Programm tatsächlich den beabsichtigten Vorgang durchläuft.Beim Programmierung kommt es oft vor, dass trotz eines syntaktischen korrekten Programms ein falsches Ergebnis zurückgeliefert wird.  .Der Grund dafür ist, dass das Programm nicht unter allen Umständen semantisch korrekt ist. Programme sind normalerweise zu groß und zu komplex, um sie vollständig zu verstehen und zu überprüfen; daher ist es wichtig, dass man ein tiefes Verständnis für operationale Semantik hat.
  Operationale Semantik erzeugt ein gekennzeichnetes Übergangssystem, dessen Zustände die geschlossenen Begriffe über einer algebraischen Signatur beschreiben und deren Übergänge zwischen Zuständen induktiv aus einer Sammlung von Übergangsregeln der Form $\frac{ Permises} {Conclusion}$ erhalten werden.Wenn alle Prämissen wahr sind, stimmen auch die Schlussfolgerungen
 
@@ -110,7 +110,7 @@ Dies bedeutet, dass der Programmierer überfordert wird, wenn es notwendig wird,
 Die Semantik von Programmiersprachen beschäftigt sich mit der Bedeutung von Programmen, die auf einem Computer ausgeführt werden sollen und die verschiedenen verfügbaren Ressourcen nutzen.
  Der Status des Speichers während der Ausführung muss berücksichtigt werden, da der Inhalt des Speichers sich ändern kann; dies geschieht beispielsweise, wenn neue Datenbank angelegt werden oder Variablen aktualisiert werden.
 Außerdem kann der Inhalt einer Variable im Moment des Programmstarts  einen großen Einfluss auf das Endergebnis haben.
-nur ein Teil vom Speicher ist von Interesse (Werte der Variablen ).
+Nur ein Teil vom Speicher ist von Interesse (Werte der Variablen ).
 Der Status kann folgendermaßen definiert werden.Es ist eine Funktion, die Variablen Werte  gibt.
  Die Menge der Zustände $\Sigma$ besteht aus Funktionen $\sigma$ : Loc $\rightarrow$ N.Somit ist $\sigma$ (X) der Wert oder Inhalt der Stelle X im Zustand $\sigma$ .
  
@@ -127,6 +127,10 @@ b $\in$ BExp, wobei BExp Boolesche Ausdruck ist,\\
 a $\in$ AExp, wobei AExp Arithmetic Expression ist,\\
 c $\in$ commands und\\
 X $\in$ Loc    (Location).
+
+Ein arithmetischer Ausdruck besteht aus einer Folge von arithmetischen Operanden (Konstanten, Variablen), die durch arithmetische Operatoren und Klammern voneinander getrennt oder miteinander verknüpft sind.\\ 
+Ein boolescher Ausdruck ist ein Ausdruck, der entweder wahr oder falsch ist.
+
 
 		
 			
@@ -146,17 +150,12 @@ Hinweise :
 \end{itemize} 
 
 \subsection{Syntaktische Menge }
-Seien $a_0$ , $a_1$ Elemente  $\in$ gleiche syntaktische Menge . Die Notation "$a_0$ == $a_1$"heißt, dass $a_0$ und $a_1$ den gleichen Wert haben oder identisch sind . 
+Seien $a_0$ , $a_1$ Elemente  $\in$ gleiche syntaktische Menge. Die Notation "$a_0$ == $a_1$"heißt, dass $a_0$ und $a_1$ den gleichen Wert haben oder identisch sind. 
 Die  arithmetische Ausdruck "12 - 2"  wird aus ganzen Zahlen aufgebaut. Jedoch sie sind nicht syntaktisch identisch mit 10 , obwohl die Ergebnisse identisch sind.
 
 \section{Auswertung}
-Arithmetik Expression wird in Integer ausgewertet und Boolean Expression wird in True oder False  ausgewertet.
-wie ein Programm verhaltet sich ?
-\begin{itemize}
-	\item<1-> Status definieren
-	\item<2-> Auswertung der Boolean Expression und Arithmetik Expression.
-	\item <3-> Kommando führt aus
-\end{itemize}
+Arithmetische Ausdrucke wird in Integer ausgewertet und boolesche Ausdrucke wird in True oder False  ausgewertet. Aber kommt es die Frage, wie ein Programm sich verhaltet?
+Erstens wird den Status definiert wird, dann werden boolesche Ausdrucke und arithmetische Ausdrucke ausgewertet. Abschließend wird das Kommando ausgeführt.
 
 \subsection{Auswertung von Arithmetik Expression}
 Die Auswertung eines arithmetischen Ausdrucks a in einem Zustand  $\sigma$ to n.
@@ -165,16 +164,15 @@ Die Auswertung eines arithmetischen Ausdrucks a in einem Zustand  $\sigma$ to n.
 \end{center}
                       
 Auswertung eines Arithmetik Expression  ($a_0$ $\oplus$ $a_1$):
-\begin{itemize}
-\item wir werten  $a_0$  in $n_0$ aus
-\item wir werten $a_1$ in $n_1$ aus
-\item Jetzt können wir $n_0$ $\oplus$ $n_1$ und n als Ergebnis von $a_0$ $\oplus$ $a_1$ erhalten.
-\end{itemize}
+
+Zuerst wird das Element $a_0$  mit $n_0$ ausgewertet, dann wird das gleiche Verfahren für das Element $a_1$ angewendet.
+Zuletzt wird die Notation "$n_0$ $\oplus$ $n_1$"  berechnet und n wird als Ergebnis von der Notation "$a_0$ $\oplus$ $a_1$" erhaltet.
+
 Also werden die folgende Regeln für die Auswertung benötigt,
 
 \begin{enumerate}
 
-\item Bei der Auswertung von Nummern : wird davon ausgegangen, dass diese berites ausgewertet sind.\label{1}
+\item Bei der Auswertung von Nummern : wird davon ausgegangen, dass diese bereits ausgewertet sind.\label{1}
 \begin{center}
 (n,$\sigma$) $\to$ n.    
 
@@ -210,14 +208,11 @@ Beispiel : \text{((Init+30)-(7+9),$\sigma$)$\to$ 14 }
 	*Hinweis:Init ist eine location mit $\sigma$(Init) = 0. 
 \end{center}
 
-Der Stil der operationale  Semantik , die hier genutzt wird,ist strukturell ( big-step semantics).
-\begin{itemize}
-\item struktural :Syntaxorientiert und induktiv.
-\item Die Semantik eines Programms wird durch  die Semantik seiner Teile definiert.
+Der Stil der operationalen Semantik, die hier genutzt wird, ist strukturell und wird auch big-step semantics genannt.
+Eine strukturelle Semantik ist syntaxorientiert und induktiv.
+Die Semantik eines Programms wird durch die Semantik seiner Teile definiert.
 
-
-Der Zustandsübergang für 7 + 9 wird mit dem Transition für 7 \ref{1} und dem Transition für 9 \ref {1} beschrieben.
-\end{itemize}
+ strukturell ist Syntaxorientiert und induktiv und  die Semantik eines Programms wird durch  die Semantik seiner Teile definiert.
               
 \subsection{Auswertung von Boolean Expression}  
 
@@ -242,27 +237,43 @@ unsere ziel ist die Boolean Expression in true oder false Value auszuwerten .
 	
 	\item \label{18} $\frac  {\text {($b_0$ , $\sigma$) $\to$ $t_0$   ($b_1$ , $\sigma$) $\to$ $t_1$} } { \text{(($b_0$ $\land$ $b_1$),$\sigma$) $\to$ t} }$ und
 	\item \label{19} $\frac  {\text {($b_0$ , $\sigma$) $\to$ $t_0$   ($b_1$ , $\sigma$) $\to$ $t_1$} } { \text{(($b_0$ $\vee$ $b_1$),$\sigma$) $\to$ t} }$.	
-\end{enumerate}  
-Beispiel : $\frac  {\text {($b_0$ , $\sigma$) $\to$ $true$ $\ref{17}$   ($b_1$ , $\sigma$) $\to$ $false$ $\ref{20}$} } { \text{(($b_0$ $\land$ $b_1$),$\sigma$) $\to$ false $\ref{18}$} }$.\\
+\end{enumerate}
 
-In unseren Beispiel wird $b_0$ ausgewertet , dann $b_1$ ausgewertet ,abschließend wird die Ergebnis berechnet . 
-Aber wird es besser , wenn einer der beide false ist , werten die andere nicht aus . so wenn $b_0$ True ist , ist dann die gesamt Ergebnis false , bevor $b_1$ ausgewertet wird. 
+Ein Beispiel der Anwendung dieser Regeln wird im Folgenden durch \\
+\begin{center}
+$\frac  {\text {($b_0$ , $\sigma$) $\to$ $true$ $\ref{17}$   ($b_1$ , $\sigma$) $\to$ $false$ $\ref{20}$} } { \text{(($b_0$ $\vee$ $b_1$),$\sigma$) $\to$ true $\ref{18}$} }$ gegeben.\\
+\end{center}
+Seien $b_0$ , $b_1$ Elemente  $\in$ gleiche syntaktische Menge (BExp).
+In unseren Beispiel wird $b_0$ ausgewertet , dann $b_1$ ausgewertet ,abschließend wird die Ergebnis von der Notation "$b_0$ $\vee$ $b_1$"  berechnet . 
+Bei der Auswertung einer der beide Elemente mit true  sollte das andere Element nicht auswerten.So  das gesamte Ergebnis ist true, solange $b_0$ true ist. 
+Aus diesem Grund sind unsere Auswertung-Regeln nicht optimal. 
+Es ist empfehlenswert, dass mehr effizient Regeln benutzt werden.
+Ein Beispiel für diese Regeln wird so angegeben :
+
+
+\begin{center}
+
+$\frac  {\text {($b_0$ , $\sigma$) $\to$ $true$ } } { \text{($b_0$ $\vee$ $b_1$,$\sigma$) $\to$ true} }$,\\
+$\frac  {\text {($b_0$ , $\sigma$) $\to$ $false$   ($b_1$ , $\sigma$) $\to$ $true$} } { \text{(($b_0$ $\vee$ $b_1$),$\sigma$) $\to$ true} }$ und\\
+$\frac  {\text {($b_0$ , $\sigma$) $\to$ $true$   ($b_1$ , $\sigma$) $\to$ $true$} } { \text{(($b_0$ $\vee$ $b_1$),$\sigma$) $\to$ true} }$.
+\end{center}
+
 
 \section{Ausführung von Kommandos}  
- Der Ziel der Ausführung von Kommandos ist den Zustand von  zu ändern.
+Der Ziel der Ausführung von Kommandos ist den Zustand von Variablen  zu ändern.
+(c,$\sigma$)$\to$ $\sigma_0$ : Die Ausführung des Befehls c im Zustand $\sigma$ und  beendet im Endzustand $\sigma_0$.\\
+(X:=1,$\sigma$) $\to$ $\sigma$[1/X]: Nach der Ausführung der Zuweisung zu Position X, wird den Wert von $X$ durch 1 ersetzt.
 
-(c,$\sigma$)$\to$ $\sigma_0$  : Die Ausführung des Befehls c im Zustand $\sigma$ und  beendet im Endzustand $\sigma_0$
-(X:=1,$\sigma$) $\to$ $\sigma$[1/X]: Nach der Ausführung der Zuweisung zu Position X, ersetzt der Wert 1 den Inhalt von X
 
-\textbf{Regeln}
+ Hier ist die notwendige \textbf{Regeln}
 \begin{enumerate}
-	\item (skip,$\sigma$) $\to$ $\sigma$
-	\item $\frac  {\text {(a , $\sigma$) $\to$ m} } { \text{ (X:=a,$\sigma$) $\to$ $\sigma$[m/X]} }$
-	\item  $\frac  {\text {($c_0$ , $\sigma$) $\to$ $\sigma_0$   ($c_1$ , $\sigma_0$) $\to$ $\sigma_1$} } { \text{($c_0$;$c_1$,$\sigma$) $\to$ $\sigma_1$} }$
-	\item $\frac  {\text {(b , $\sigma$) $\to$ true   ($c_0$ , $\sigma$) $\to$ $\sigma_1$} } { \text{(if b then $c_0$ else $c_1$,$\sigma$) $\to$ $\sigma_1$} }$
-	\item $\frac  {\text {(b , $\sigma$) $\to$ false   ($c_1$ , $\sigma$) $\to$ $\sigma_1$} } { \text{(if b then $c_0$ else $c_1$,$\sigma$) $\to$ $\sigma_1$} }$
-	\item $\frac {\text{(b,$\sigma$) $\to$ false}} {\text{(while b do c, $\sigma$)$\to$ $\sigma$ }}$
-	\item $\frac {\text{(b,$\sigma$)$\to$ true $\quad$ (c,$\sigma$)$\to$ $\sigma_2$  $\quad$ (while b do c ,$\sigma_2$) $\to$ $\sigma_1$}}{\text{(while b do c,$\sigma$) $\to$ $\sigma_1$}}$   
+	\item (skip,$\sigma$) $\to$ $\sigma$ ,
+	\item $\frac  {\text {(a , $\sigma$) $\to$ m} } { \text{ (X:=a,$\sigma$) $\to$ $\sigma$[m/X]} }$,
+	\item  $\frac  {\text {($c_0$ , $\sigma$) $\to$ $\sigma_0$   ($c_1$ , $\sigma_0$) $\to$ $\sigma_1$} } { \text{($c_0$;$c_1$,$\sigma$) $\to$ $\sigma_1$} }$,
+	\item $\frac  {\text {(b , $\sigma$) $\to$ true   ($c_0$ , $\sigma$) $\to$ $\sigma_1$} } { \text{(if b then $c_0$ else $c_1$,$\sigma$) $\to$ $\sigma_1$} }$,
+	\item $\frac  {\text {(b , $\sigma$) $\to$ false   ($c_1$ , $\sigma$) $\to$ $\sigma_1$} } { \text{(if b then $c_0$ else $c_1$,$\sigma$) $\to$ $\sigma_1$} }$,
+	\item $\frac {\text{(b,$\sigma$) $\to$ false}} {\text{(while b do c, $\sigma$)$\to$ $\sigma$ }}$ und
+	\item $\frac {\text{(b,$\sigma$)$\to$ true $\quad$ (c,$\sigma$)$\to$ $\sigma_2$  $\quad$ (while b do c ,$\sigma_2$) $\to$ $\sigma_1$}}{\text{(while b do c,$\sigma$) $\to$ $\sigma_1$}}$  . 
 	              
       \end{enumerate}
   
